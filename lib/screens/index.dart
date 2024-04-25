@@ -2,6 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:todo/components/Forms.dart';
+import 'package:todo/components/MyAppBar.dart';
 import 'package:todo/components/TaskItem.dart';
 import 'package:todo/model/List.dart';
 
@@ -28,7 +29,6 @@ class _IndexState extends State<Index> {
         Error = "Please enter both a title and description.";
         return;
       } else {
-        // Si ambos campos no están vacíos, proceder con la adición de la tarea
         var ultimoID = tasksList.last["id"] as int;
         int siguienteID = ultimoID + 1;
         var newValue = {
@@ -75,18 +75,15 @@ class _IndexState extends State<Index> {
     } else {
       tasksListFilter = tasksList.toList();
     }
+
     return Scaffold(
       backgroundColor: const Color(0xFFEEEFF5),
-      appBar: AppBar(
-        backgroundColor: Colors.transparent,
-        surfaceTintColor: Colors.transparent,
-        toolbarHeight: 90,
-        title: const Center(
-          child: Text("All Tasks"),
-        ),
+      appBar: const MyAppBar(
+        title: "All Tasks",
+        centerTitle: true,
       ),
       body: Container(
-        padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 30),
+        padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           // Filtros
@@ -150,7 +147,7 @@ class _IndexState extends State<Index> {
               ],
             ),
 
-            // TO DO LIST
+            // ToDo List Title
 
             Container(
               margin: const EdgeInsets.only(top: 30, bottom: 10),
@@ -162,6 +159,8 @@ class _IndexState extends State<Index> {
                 ),
               ),
             ),
+
+            // List
             Expanded(
               child: ListView(
                 shrinkWrap: true,
@@ -177,6 +176,9 @@ class _IndexState extends State<Index> {
           ],
         ),
       ),
+
+      // Floating Action Button
+
       floatingActionButton: FloatingActionButton(
         onPressed: () {
           showModalBottomSheet(

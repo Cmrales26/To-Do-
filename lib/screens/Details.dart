@@ -1,6 +1,7 @@
 // ignore_for_file: file_names
 
 import 'package:flutter/material.dart';
+import 'package:todo/components/MyAppBar.dart';
 
 class Details extends StatefulWidget {
   const Details({super.key});
@@ -16,21 +17,19 @@ class _DetailsState extends State<Details> {
         ModalRoute.of(context)?.settings.arguments as Map<String, dynamic>?;
 
     if (arguments != null) {
-      final int id = arguments['id'] as int;
-      final String todoTitle = arguments['todoTitle'] as String;
-      final String todoDescription = arguments['todoDescription'] as String;
-      final bool isDone = arguments['isDone'] as bool;
+      final int id = arguments['id'];
+      final String todoTitle = arguments['todoTitle'];
+      final String todoDescription = arguments['todoDescription'];
+      final bool isDone = arguments['isDone'];
 
       return Scaffold(
         backgroundColor: const Color(0xFFEEEFF5),
-        appBar: AppBar(
-          surfaceTintColor: Colors.transparent,
-          backgroundColor: Colors.transparent,
-          toolbarHeight: 80,
-          title: const Text("Details"),
+        appBar: const MyAppBar(
+          title: "Details",
+          centerTitle: false,
         ),
         body: Container(
-          padding: const EdgeInsets.symmetric(vertical: 30, horizontal: 20),
+          padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 20),
           width: MediaQuery.of(context).size.width,
           child: ListView(
             shrinkWrap: true,
@@ -87,16 +86,14 @@ class _DetailsState extends State<Details> {
         ),
       );
     } else {
-      return Scaffold(
-        backgroundColor: const Color(0xFFEEEFF5),
-        appBar: AppBar(
-          surfaceTintColor: Colors.transparent,
-          backgroundColor: Colors.transparent,
-          toolbarHeight: 80,
-          title: const Text("Error"),
+      return const Scaffold(
+        backgroundColor: Color(0xFFEEEFF5),
+        appBar: MyAppBar(
+          title: "Error",
+          centerTitle: false,
         ),
-        body: const Center(
-          child: Text('No se han proporcionado datos para mostrar.'),
+        body: Center(
+          child: Text('No data provided to display.'),
         ),
       );
     }

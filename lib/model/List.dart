@@ -3,9 +3,8 @@
 var tasksList = [
   {
     "id": 01,
-    "todoTitle": 'Morning Exercises',
-    "todoDescription":
-        "Do Morning exercise at 6:00amDo Morning exercise at 6:00amDo Morning exercise at 6:00amDo Morning exercise at 6:00amDo Morning exercise at 6:00amDo Morning exercise at 6:00amDo Morning exercise at 6:00amDo Morning exercise at 6:00amDo Morning exercise at 6:00amDo Morning exercise at 6:00amDo Morning exercise at 6:00amDo Morning exercise at 6:00amDo Morning exercise at 6:00amDo Morning exercise at 6:00amDo Morning exercise at 6:00amDo Morning exercise at 6:00amDo Morning exercise at 6:00amDo Morning exercise at 6:00amDo Morning exercise at 6:00amDo Morning exercise at 6:00amDo Morning exercise at 6:00amDo Morning exercise at 6:00amDo Morning exercise at 6:00amDo Morning exercise at 6:00amDo Morning exercise at 6:00amDo Morning exercise at 6:00amDo Morning exercise at 6:00amDo Morning exercise at 6:00amDo Morning exercise at 6:00amDo Morning exercise at 6:00amDo Morning exercise at 6:00amDo Morning exercise at 6:00amDo Morning exercise at 6:00amDo Morning exercise at 6:00amDo Morning exercise at 6:00amDo Morning exercise at 6:00amDo Morning exercise at 6:00amDo Morning exercise at 6:00amDo Morning exercise at 6:00amDo Morning exercise at 6:00amDo Morning exercise at 6:00amDo Morning exercise at 6:00amDo Morning exercise at 6:00amDo Morning exercise at 6:00amDo Morning exercise at 6:00amDo Morning exercise at 6:00amDo Morning exercise at 6:00amDo Morning exercise at 6:00amDo Morning exercise at 6:00amDo Morning exercise at 6:00amDo Morning exercise at 6:00amDo Morning exercise at 6:00amDo Morning exercise at 6:00amDo Morning exercise at 6:00amDo Morning exercise at 6:00amDo Morning exercise at 6:00amDo Morning exercise at 6:00amDo Morning exercise at 6:00amDo Morning exercise at 6:00amDo Morning exercise at 6:00amDo Morning exercise at 6:00amDo Morning exercise at 6:00amDo Morning exercise at 6:00amDo Morning exercise at 6:00amDo Morning exercise at 6:00amDo Morning exercise at 6:00amDo Morning exercise at 6:00amDo Morning exercise at 6:00amDo Morning exercise at 6:00amDo Morning exercise at 6:00am",
+    "todoTitle": 'Morning Exercise',
+    "todoDescription": "Do Morning exercise at 6:00am",
     "isDone": false,
   },
   {
