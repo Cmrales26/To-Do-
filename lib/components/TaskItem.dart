@@ -1,3 +1,5 @@
+// ignore_for_file: file_names
+
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 
@@ -51,6 +53,8 @@ class TaskItem extends StatelessWidget {
                       );
                     },
                     child: Container(
+                      width: MediaQuery.sizeOf(context).width,
+                      padding: const EdgeInsets.symmetric(vertical: 20),
                       margin: const EdgeInsets.only(left: 10),
                       child: Text(
                         "${task["todoTitle"]}",

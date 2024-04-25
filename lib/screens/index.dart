@@ -15,7 +15,7 @@ class Index extends StatefulWidget {
 
 class _IndexState extends State<Index> {
   String filter = "All";
-  String Error = "";
+  bool Error = false;
   late List<Map<String, dynamic>> tasksListFilter;
   TextEditingController t = TextEditingController();
   TextEditingController d = TextEditingController();
@@ -26,10 +26,9 @@ class _IndexState extends State<Index> {
       String description = d.text.trim();
 
       if (title.isEmpty || description.isEmpty) {
-        Error = "Please enter both a title and description.";
-        return;
+        Error = true;
       } else {
-        var ultimoID = tasksList.last["id"] as int;
+        var ultimoID = tasksList.isNotEmpty ? (tasksList.last["id"] as int) : 0;
         int siguienteID = ultimoID + 1;
         var newValue = {
           "id": siguienteID,
@@ -39,7 +38,8 @@ class _IndexState extends State<Index> {
         };
         tasksList.add(newValue);
         Navigator.pop(context);
-        Error = "";
+
+        Error = false;
         t.clear();
         d.clear();
       }
@@ -195,7 +195,6 @@ class _IndexState extends State<Index> {
                 onPressed: addtask,
                 title: t,
                 description: d,
-                error: Error,
               );
             },
           );

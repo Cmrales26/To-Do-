@@ -15,6 +15,7 @@ class MyAppBar extends StatelessWidget implements PreferredSizeWidget {
   Widget build(BuildContext context) {
     return AppBar(
       backgroundColor: Colors.transparent,
+      surfaceTintColor: Colors.transparent,
       toolbarHeight: 90,
       title: centerTitle // Verificar si el título debe estar centrado
           ? Center(child: Text(title)) // Si es verdadero, centrar el título

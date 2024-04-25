@@ -3,7 +3,7 @@
 var tasksList = [
   {
     "id": 01,
-    "todoTitle": 'Morning Exercise',
+    "todoTitle": 'Morning ExerciseMorning ExerciseMorning ExerciseMorning',
     "todoDescription": "Do Morning exercise at 6:00am",
     "isDone": false,
   },

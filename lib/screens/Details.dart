@@ -37,24 +37,25 @@ class _DetailsState extends State<Details> {
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        todoTitle,
-                        style: const TextStyle(
-                          fontSize: 20,
-                          fontWeight: FontWeight.bold,
+                  Flexible(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          todoTitle,
+                          style: const TextStyle(
+                            fontSize: 15,
+                            fontWeight: FontWeight.bold,
+                          ),
                         ),
-                      ),
-                      Text(
-                        'Task id:$id',
-                        style:
-                            const TextStyle(fontSize: 10, color: Colors.grey),
-                      ),
-                    ],
+                        Text(
+                          'Task id:$id',
+                          style:
+                              const TextStyle(fontSize: 10, color: Colors.grey),
+                        ),
+                      ],
+                    ),
                   ),
-                  // Agregar un text que diga Complete or peding depenst of the value of idDone
                   Text(
                     isDone ? 'Complete' : 'Pending',
                     style: TextStyle(
@@ -72,7 +73,7 @@ class _DetailsState extends State<Details> {
                     const Text(
                       "Task Description",
                       style: TextStyle(
-                        fontSize: 20,
+                        fontSize: 13,
                         fontWeight: FontWeight.bold,
                       ),
                     ),
