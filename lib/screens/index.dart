@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:todo/components/Forms.dart';
 import 'package:todo/components/MyAppBar.dart';
 import 'package:todo/components/TaskItem.dart';
-import 'package:todo/model/List.dart';
+import 'package:todo/model/Task.dart';
 
 class Index extends StatefulWidget {
   const Index({super.key});
@@ -14,9 +14,11 @@ class Index extends StatefulWidget {
 }
 
 class _IndexState extends State<Index> {
+  final Map<String, Task> tasksList = {};
+
   String filter = "All";
   bool Error = false;
-  late List<Map<String, dynamic>> tasksListFilter;
+  late List<Task> tasksListFilter;
   TextEditingController t = TextEditingController();
   TextEditingController d = TextEditingController();
 
@@ -28,15 +30,15 @@ class _IndexState extends State<Index> {
       if (title.isEmpty || description.isEmpty) {
         Error = true;
       } else {
-        var ultimoID = tasksList.isNotEmpty ? (tasksList.last["id"] as int) : 0;
+        var ultimoID = tasksList.isNotEmpty ? tasksList.values.last.id : 0;
         int siguienteID = ultimoID + 1;
-        var newValue = {
-          "id": siguienteID,
-          "todoTitle": title,
-          "todoDescription": description,
-          "isDone": false,
-        };
-        tasksList.add(newValue);
+        var newValue = Task(
+          id: siguienteID,
+          todoTitle: title,
+          todoDescription: description,
+          isDone: false,
+        );
+        tasksList['$siguienteID'] = newValue;
         Navigator.pop(context);
 
         Error = false;
@@ -46,16 +48,17 @@ class _IndexState extends State<Index> {
     });
   }
 
-  void deleteTask(id) {
-    tasksList.removeWhere((task) => task["id"] == id);
+  void deleteTask(int id) {
+    tasksList.remove(id.toString());
     setState(() {});
   }
 
-  void changeStatus(id) {
-    var task = tasksList.firstWhere((task) => task["id"] == id);
-    task["isDone"] = !(task["isDone"] as bool);
-
-    setState(() {});
+  void changeStatus(int id) {
+    if (tasksList.containsKey(id.toString())) {
+      Task task = tasksList[id.toString()]!;
+      task.isDone = !task.isDone;
+      setState(() {});
+    }
   }
 
   void ChangeFilter(value) {
@@ -67,13 +70,11 @@ class _IndexState extends State<Index> {
   @override
   Widget build(BuildContext context) {
     if (filter == "Complete") {
-      tasksListFilter =
-          tasksList.where((task) => task["isDone"] == true).toList();
+      tasksListFilter = tasksList.values.where((task) => task.isDone).toList();
     } else if (filter == "Pending") {
-      tasksListFilter =
-          tasksList.where((task) => task["isDone"] == false).toList();
+      tasksListFilter = tasksList.values.where((task) => !task.isDone).toList();
     } else {
-      tasksListFilter = tasksList.toList();
+      tasksListFilter = tasksList.values.toList();
     }
 
     return Scaffold(

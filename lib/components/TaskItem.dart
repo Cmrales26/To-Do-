@@ -1,12 +1,12 @@
 // ignore_for_file: file_names
 
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
+import 'package:todo/model/Task.dart';
 
 class TaskItem extends StatelessWidget {
-  final Map<String, dynamic> task;
-  final Function(dynamic) deleteTask;
-  final Function(dynamic) changeStatus;
+  final Task task;
+  final Function(int) deleteTask;
+  final Function(int) changeStatus;
 
   const TaskItem({
     super.key,
@@ -28,9 +28,9 @@ class TaskItem extends StatelessWidget {
       child: Row(
         children: [
           Checkbox(
-            value: task["isDone"] as bool? ?? false,
+            value: task.isDone as bool? ?? false,
             onChanged: (value) {
-              changeStatus(task["id"]);
+              changeStatus(task.id);
             },
             fillColor: MaterialStateProperty.resolveWith<Color>(
                 (Set<MaterialState> states) {
@@ -57,13 +57,13 @@ class TaskItem extends StatelessWidget {
                       padding: const EdgeInsets.symmetric(vertical: 20),
                       margin: const EdgeInsets.only(left: 10),
                       child: Text(
-                        "${task["todoTitle"]}",
+                        task.todoTitle,
                         overflow: TextOverflow.ellipsis,
                         style: TextStyle(
-                          color: task["isDone"]
+                          color: task.isDone
                               ? Colors.grey
                               : null, // Si está hecho, establece el color en gris
-                          decoration: task["isDone"]
+                          decoration: task.isDone
                               ? TextDecoration.lineThrough
                               : null, // Si está hecho, agrega una línea a través del texto
                         ),
@@ -73,7 +73,7 @@ class TaskItem extends StatelessWidget {
                 ),
                 IconButton(
                   onPressed: () {
-                    deleteTask(task["id"]);
+                    deleteTask(task.id);
                   },
                   icon: const Icon(
                     Icons.delete,
