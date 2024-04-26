@@ -14,7 +14,44 @@ class Index extends StatefulWidget {
 }
 
 class _IndexState extends State<Index> {
-  final Map<String, Task> tasksList = {};
+  final Map<String, Task> tasksList = {
+    '1': Task(
+      id: 1,
+      todoTitle: 'Morning ExerciseMorning ExerciseMorning ExerciseMorning',
+      todoDescription: 'Do Morning exercise at 6:00am',
+      isDone: false,
+    ),
+    '2': Task(
+      id: 2,
+      todoTitle: 'Complete Work Report',
+      todoDescription: 'Finish the weekly work report',
+      isDone: true,
+    ),
+    '3': Task(
+      id: 3,
+      todoTitle: 'Call Mom',
+      todoDescription: "Call mom to wish her happy birthday",
+      isDone: true,
+    ),
+    '4': Task(
+      id: 4,
+      todoTitle: 'Go for a Run',
+      todoDescription: "Run in the park for 30 minutes",
+      isDone: false,
+    ),
+    '5': Task(
+      id: 5,
+      todoTitle: 'Buy Groceries',
+      todoDescription: "Buy vegetables, fruits, and bread",
+      isDone: false,
+    ),
+    '6': Task(
+      id: 6,
+      todoTitle: 'Read a Book',
+      todoDescription: "Read a chapter of 'To Kill a Mockingbird'",
+      isDone: false,
+    ),
+  };
 
   String filter = "All";
   bool Error = false;
@@ -163,17 +200,21 @@ class _IndexState extends State<Index> {
 
             // List
             Expanded(
-              child: ListView(
-                shrinkWrap: true,
-                children: tasksListFilter.reversed.map((task) {
-                  return TaskItem(
-                    task: task,
-                    deleteTask: deleteTask,
-                    changeStatus: changeStatus,
-                  );
-                }).toList(),
+              child: Padding(
+                padding: const EdgeInsets.only(
+                    bottom: 20.0), // Ajusta el valor según sea necesario
+                child: ListView(
+                  shrinkWrap: true,
+                  children: tasksListFilter.reversed.map((task) {
+                    return TaskItem(
+                      task: task,
+                      deleteTask: deleteTask,
+                      changeStatus: changeStatus,
+                    );
+                  }).toList(),
+                ),
               ),
-            )
+            ),
           ],
         ),
       ),
